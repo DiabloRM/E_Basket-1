@@ -38,6 +38,7 @@ const LoginSignup = () => {
         return;
       }
 
+
       if (isSignUp) {
         // Check if terms and conditions checkbox is checked
         if (!isCheckboxChecked) {
@@ -122,7 +123,7 @@ const LoginSignup = () => {
               id=''
               onChange={() => setIsCheckboxChecked(!isCheckboxChecked)}
             />
-            <p>By continuing, I agree to all the terms and conditions of use & privacy policy.</p>
+            <p>By continuing, I agree to all the terms and conditions of use & privacy policy. </p>
           </div>
         )}
       </div>

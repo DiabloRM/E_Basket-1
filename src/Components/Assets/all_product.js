@@ -345,7 +345,7 @@ let all_product = [
 {
   id: 39,
   name: "Nike Waffle One Sneaker",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/51+P9uAvb1L._AC_UY695_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -353,7 +353,7 @@ let all_product = [
 {
   id: 40,
   name: "Nike Running Shoe",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/71oEKkghg-L._AC_UX575_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -361,7 +361,7 @@ let all_product = [
 {
   id: 41,
   name: "Flat Slip On Pumps",
-  category: "flats",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/41M54ztS6IL._AC_SY625._SX._UX._SY._UY_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -369,7 +369,7 @@ let all_product = [
 {
   id: 42,
   name: "Knit Ballet Flat",
-  category: "flats",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/71zKuNICJAL._AC_UX625_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -377,7 +377,7 @@ let all_product = [
 {
   id: 43,
   name: "Loafer Flats",
-  category: "flats",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61V9APfz97L._AC_UY695_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -385,7 +385,7 @@ let all_product = [
 {
   id: 44,
   name: "Nike Zoom Freak",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/71VaQ+V6XnL._AC_UY695_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -393,7 +393,7 @@ let all_product = [
 {
   id: 45,
   name: "Nike Men's Sneaker",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/61-cBsLhJHL._AC_UY695_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -401,7 +401,7 @@ let all_product = [
 {
   id: 46,
   name: "PUMA BLACK-OCE",
-  category: "sneakers",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/81xXDjojYKS._AC_UX575_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -409,7 +409,7 @@ let all_product = [
 {
   id: 47,
   name: "Pacer Future Sneaker",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/71E75yRwCDL._AC_UY575_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -417,7 +417,7 @@ let all_product = [
 {
   id: 48,
   name: "Unisex-Adult Super",
-  category: "sneakers",
+  category: ["men", "women"],
   image: "https://m.media-amazon.com/images/I/71jeoX0rMBL._AC_UX575_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -425,7 +425,7 @@ let all_product = [
 {
   id: 49,
   name: "Roma Basic Sneaker",
-  category: "sneakers",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61TM6Q9dvxL._AC_UX575_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -433,7 +433,7 @@ let all_product = [
 {
   id: 50,
   name: "Pacer Future Doubleknit",
-  category: "sneakers",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/7128-af7joL._AC_UY575_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -441,7 +441,7 @@ let all_product = [
 {
   id: 51,
   name: "Fusion Evo Golf Shoe",
-  category: "sneakers",
+  category: "men",
   image: "https://m.media-amazon.com/images/I/81xXDjojYKS._AC_UX575_.jpg",
   new_price: "100",
   old_price: "$140,00",
@@ -449,7 +449,7 @@ let all_product = [
 {
   id: 52,
   name: "Rainbow Chex Skate",
-  category: "flats",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/719gdz8lsTS._AC_UX575_.jpg",
   new_price: "100",
   old_price: "$140,00",
@@ -457,7 +457,7 @@ let all_product = [
 {
   id: 53,
   name: "Low-Top Trainers",
-  category: "sandals",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/71gpFHJlnoL._AC_UX575_.jpg",
   new_price: "100",
   old_price: "$140,00",
@@ -465,7 +465,7 @@ let all_product = [
 {
   id: 54,
   name: "Vans Unisex Low-Top",
-  category: "sandals",
+  category: ["men", "women"],
   image: "https://m.media-amazon.com/images/I/71pf7VFs9CL._AC_UX575_.jpg",
   new_price: "100",
   old_price: "$140,00",
@@ -473,7 +473,7 @@ let all_product = [
 {
   id: 55,
   name: "Classic Bandana Sneakers",
-  category: "sandals",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61N4GyWcHPL._AC_UY575_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -481,7 +481,7 @@ let all_product = [
 {
   id: 56,
   name: "Chunky High Heel",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61bncQ44yML._AC_UX695_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -489,7 +489,7 @@ let all_product = [
 {
   id: 57,
   name: "Slip On Stiletto High Heel",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/71czu7WgGuL._AC_UY695_.jpg",
   new_price: "100",
   old_price: "$140,00",
@@ -497,7 +497,7 @@ let all_product = [
 {
   id: 58,
   name: "DREAM PAIRS Court Shoes",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61men05KRxL._AC_UY625_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -505,7 +505,7 @@ let all_product = [
 {
   id: 59,
   name: "Nike Air Vapormax Plus",
-  category: "sneakers",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -513,7 +513,7 @@ let all_product = [
 {
   id: 60,
   name: "Low Mid Block Heels",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/51PGWTXgf-L._AC_UY625_.jpg",
   new_price: "200",
   old_price: "$140,00",
@@ -521,7 +521,7 @@ let all_product = [
 {
   id: 61,
   name: "Chunky High Heel",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/616sA5XUKtL._AC_UY675_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -529,7 +529,7 @@ let all_product = [
 {
   id: 62,
   name: "Amore Fashion Stilettos",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/71h5+MbEK7L._AC_UY625_.jpg",
   new_price: "150",
   old_price: "$140,00",
@@ -537,7 +537,7 @@ let all_product = [
 {
   id: 63,
   name: "Bridal Sandals Glitter",
-  category: "heels",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/61uw5RDxKQL._AC_UY625_.jpg",
   new_price: "50",
   old_price: "$140,00",
@@ -545,7 +545,7 @@ let all_product = [
 {
   id: 64,
   name: "Wedding Prom Bridal",
-  category: "flats",
+  category: "women",
   image: "https://m.media-amazon.com/images/I/71yhoZP0l6L._AC_UY695_.jpg",
   new_price: "50",
   old_price: "$140,00",

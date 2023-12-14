@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './CSS/LoginSignup.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-
 import 'firebase/auth';
 
 const firebaseConfig = {
@@ -27,20 +26,28 @@ const LoginSignup = () => {
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log('User is already authenticated:', user);
+      }
+    });
+
+    return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleAuth = async () => {
     try {
       setErrorMessage('');
 
-      // Check if email is in a valid format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         setErrorMessage('Invalid email format.');
         return;
       }
 
-
       if (isSignUp) {
-        // Check if terms and conditions checkbox is checked
         if (!isCheckboxChecked) {
           setErrorMessage('Please agree to the terms and conditions.');
           return;
@@ -57,7 +64,7 @@ const LoginSignup = () => {
       } else {
         await signInWithEmailAndPassword(auth, email, password);
         console.log('User logged in successfully!');
-        navigate('/shop');
+        navigate('/user');
       }
     } catch (error) {
       console.error('Authentication error:', error.message);
@@ -65,6 +72,7 @@ const LoginSignup = () => {
     }
   };
 
+  
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {

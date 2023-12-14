@@ -1,11 +1,14 @@
+/* Navbar styles */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
   box-shadow: 0 1px 3px -2px black;
+  position: relative;
 }
 
+/* Logo styles */
 .nav-logo img {
   width: 150px;
   height: auto;
@@ -16,28 +19,30 @@
 .nav-logo {
   display: flex;
   align-items: center;
-  gap: 10px; /* Increased the gap for more space */
+  gap: 10px;
 }
 
 .nav-logo p {
   color: #171717;
-  font-size: 38px; /* Reverted to the original size */
+  font-size: 38px;
   font-weight: 600;
   margin: 0;
 }
+
+/* Search styles */
 .nav-search {
   display: flex;
   align-items: center;
-  gap: 20px; /* Increased the gap for more space */
+  gap: 20px;
 }
 
 .nav-search input {
   height: 25px;
-  width: 300px; /* Increased the width for a longer search bar */
+  width: 300px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 30px;
-  font-size: 20px; /* Adjusted font size */
+  font-size: 20px;
 }
 
 .nav-search button {
@@ -46,6 +51,7 @@
   cursor: pointer;
 }
 
+/* Menu styles */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -73,6 +79,29 @@
   background: #ff4141;
 }
 
+/* Dropdown styles */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1;
+  margin-top: 200px;
+  color: inherit;
+}
+
+.dropdown-content a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Login and Cart styles */
 .nav-login-cart {
   display: flex;
   align-items: center;

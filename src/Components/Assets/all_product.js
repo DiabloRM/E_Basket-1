@@ -552,4 +552,13 @@ let all_product = [
 },
 ];
 
-export default all_product;
+const searchProducts = (query) => {
+  return all_product.filter(
+    (product) =>
+      (product.name.toLowerCase().includes(query.toLowerCase()) ||
+      (typeof product.category === 'string' && product.category.toLowerCase().includes(query.toLowerCase())))
+  );
+};
+
+
+export { all_product, searchProducts };

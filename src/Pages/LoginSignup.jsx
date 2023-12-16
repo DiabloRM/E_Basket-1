@@ -81,6 +81,7 @@ const LoginSignup = () => {
     });
 
     return () => unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth]);
 
   return (

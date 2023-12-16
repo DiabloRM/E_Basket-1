@@ -3,7 +3,7 @@ import "./Navbar.css";
 import logo from '../Assets/logo1.png';
 import search_icon from '../Assets/search_icon.png';
 import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../../Context/ShopContext";
@@ -12,16 +12,22 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [menu, setMenu] = useState("shop");
   const { getTotalCartItems } = useContext(ShopContext);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Add your search logic here
-    console.log("Search query:", searchQuery);
+    navigate(`/search?q=${searchQuery}`);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="nav-logo" />
+        <img src={logo} alt="nav-logo"/>
         <p>Basket</p>
       </div>
       <div className='nav-search'>
@@ -30,13 +36,14 @@ const Navbar = () => {
           placeholder='Search products...'
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
         <button onClick={handleSearch}>
           <img src={search_icon} alt='Search' />
         </button>
       </div>
       <ul className="nav-menu">
-        <li
+      <li
           onMouseEnter={() => setMenu("shop")}
           onClick={() => {
             setMenu("shop");
@@ -119,3 +126,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

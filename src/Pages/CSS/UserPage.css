@@ -41,7 +41,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: #3498db;
+    background-color: #49b4e1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,8 +50,8 @@
   
   /* Initials styles */
   .user-page-container .initials {
-    font-size: 24px;
-    color: #fff;
+    font-size: 80px;
+    color: #000000;
     font-family: 'Helvetica', sans-serif;
   }
   

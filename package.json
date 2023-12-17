@@ -12,6 +12,7 @@
     "express": "^4.18.2",
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
+    "firestore": "^1.1.6",
     "mysql2": "^3.6.5",
     "node.js": "^0.0.1-security",
     "react": "^18.2.0",

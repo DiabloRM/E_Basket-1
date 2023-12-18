@@ -1,0 +1,57 @@
+/* UserPage.css */
+
+/* Container styles */
+.user-page-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading styles */
+  .user-page-container h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  /* Paragraph styles */
+  .user-page-container p {
+    font-size: 18px;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  /* User greeting styles */
+  .user-page-container h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #3498db;
+    margin: 15px auto;
+  }
+  
+  /* Profile photo styles */
+.user-page-container .profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #49b4e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  
+  /* Initials styles */
+  .user-page-container .initials {
+    font-size: 80px;
+    color: #000000;
+    font-family: 'Helvetica', sans-serif;
+  }
+  

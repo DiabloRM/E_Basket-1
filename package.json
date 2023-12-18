@@ -12,7 +12,9 @@
     "express": "^4.18.2",
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
+    "firestore": "^1.1.6",
     "mysql2": "^3.6.5",
+    "node.js": "^0.0.1-security",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
   }
 }

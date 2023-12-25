@@ -22,39 +22,41 @@ const UserPage = () => {
         setLoading(false);
       }
     };
-  
+
     if (user) {
       fetchUserData();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, firestore]);
-  
+
   if (loading) {
     return <p>Loading...</p>;
   }
 
-  // Function to get initials from the first and last name
-  const getInitials = (firstname, lastname) => {
-    return `${firstname ? firstname.charAt(0) : ''}${lastname ? lastname.charAt(0) : ''}`;
+  // Function to get initials from the username
+  const getInitials = (username) => {
+    return username ? username.charAt(0) : '';
   };
+
   return (
     <div className="user-page-container">
       <div className="profile-photo">
         {userData && (
           <>
             <div className="initials">
-              {getInitials(userData.firstname, userData.lastname)}
+              {getInitials(userData.username)}
             </div>
             <div className="name">
-              {userData.firstname} {userData.lastname}
+              {userData.username}
             </div>
           </>
         )}
       </div>
-      <h1>Welcome, {userData ? `${userData.firstname} ${userData.lastname}` : user ? 'user' : ''}!</h1>
+      <h1>Welcome, {userData ? userData.username : user ? 'user' : ''}!</h1>
       {user && (
         <div>
           <p>Email: {user.email}</p>
+          <p>UID: {user.uid}</p>
         </div>
       )}
     </div>
@@ -62,9 +64,13 @@ const UserPage = () => {
 };
 
 export default UserPage;
+
 */
 
 
+
+
+/*
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, firestore } from '../firebase';
@@ -83,10 +89,9 @@ const UserPage = () => {
           setUserData(userDoc.data());
         }
 
-        // Assuming 'username' is a field in the user document
         const usernameDoc = await firestore.collection('users').doc(user.uid).get();
         if (usernameDoc.exists) {
-          setUserData(prevData => ({
+          setUserData((prevData) => ({
             ...prevData,
             username: usernameDoc.data().username,
           }));
@@ -112,18 +117,12 @@ const UserPage = () => {
     <div className="user-page-container">
       <div className="profile-photo">
         {userData && userData.firstname && userData.lastname ? (
-          <>
-            <div className="initials">
-              {`${userData.firstname.charAt(0)}${userData.lastname.charAt(0)}`}
-            </div>
-            <div className="name">
-              {`${userData.firstname} ${userData.lastname}`}
-            </div>
-          </>
+          <div className="name">
+            {`${userData.firstname} ${userData.lastname}`}
+          </div>
         ) : (
-          <div className="initials">
-            {/* Handle cases where firstname or lastname is missing */}
-            {user ? `${user.email.charAt(0).toUpperCase()}` : ''}
+          <div className="name">
+            {user ? user.email : ''}
           </div>
         )}
       </div>
@@ -132,7 +131,8 @@ const UserPage = () => {
       </h1>
       {userData && (
         <div>
-          <p>Username: {userData.username}</p>
+          <p>User ID: {user.uid}</p>
+          <p>Username: {userData.Username}</p>
           <p>Email: {user.email}</p>
         </div>
       )}
@@ -142,3 +142,47 @@ const UserPage = () => {
 
 export default UserPage;
 
+*/
+
+
+
+
+
+// UserPage.js
+import React from 'react';
+import { useUser } from '../Context/UserContext';
+import './CSS/UserPage.css';
+
+const UserPage = () => {
+  const { user, userData, loading, getInitials } = useUser();
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  return (
+    <div className="user-page-container">
+      <div className="profile-photo">
+        {userData && (
+          <>
+            <div className="initials">
+              {getInitials(userData.username)}
+            </div>
+            <div className="name">
+              {userData.username}
+            </div>
+          </>
+        )}
+      </div>
+      <h1>Welcome, {userData ? userData.username : user ? 'user' : ''}!</h1>
+      {user && (
+        <div>
+          <p>Email: {user.email}</p>
+          <p>UID: {user.uid}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default UserPage;

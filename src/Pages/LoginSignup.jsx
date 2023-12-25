@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import './CSS/LoginSignup.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCf3s60UppiJXVNLkkx-9B8DIE30KflF9Y",
-  authDomain: "e-basket-16bd9.firebaseapp.com",
-  projectId: "e-basket-16bd9",
-  storageBucket: "e-basket-16bd9.appspot.com",
-  messagingSenderId: "643918553960",
-  appId: "1:643918553960:web:6f03d2486b507f61d9acdd",
-  measurementId: "G-KCRTJ2WPTN"
+  apiKey: "AIzaSyCB10NUdY08hoSfCTqa7SJu5Za8NhSi15g",
+  authDomain: "e-basket-01.firebaseapp.com",
+  projectId: "e-basket-01",
+  storageBucket: "e-basket-01.appspot.com",
+  messagingSenderId: "515946268452",
+  appId: "1:515946268452:web:bb17a362230b686eec55b1",
+  measurementId: "G-R0BL91QMD4"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 const LoginSignup = () => {
   const navigate = useNavigate();
@@ -25,17 +26,16 @@ const LoginSignup = () => {
   const [isSignUp, setIsSignUp] = useState(true);
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [currentuser, setCurrentUser] = useState();
+  const [username, setUserName] = useState('');
+  
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log('User is already authenticated:', user);
-      }
-    });
-
-    return () => unsubscribe();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (currentuser) {
+      console.log('User is logged in:', currentuser.email , currentuser.username);
+    } else {
+      console.log('User is not logged in.');
+    }
+  }, [currentuser]);
 
   const handleAuth = async () => {
     try {
@@ -58,11 +58,44 @@ const LoginSignup = () => {
           return;
         }
 
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password ,username);
+        const user = userCredential.user;
+        setCurrentUser(user);
+
+        try {
+          const userDocRef = doc(db, "users", user.uid, user.username);
+          await setDoc(userDocRef, {
+            username: user.username,
+            email: user.email,
+            // Add any other user information you want to store
+          });
+
+          alert("Welcome new User created successfully");
+          console.log("Document written with ID: ", userDocRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+
         console.log('User created successfully!');
         setIsSignUp(false);
       } else {
         await signInWithEmailAndPassword(auth, email, password);
+
+        // Set the current user state after login
+        const user = auth.currentUser;
+        setCurrentUser(user);
+
+        try {
+          const userDocRef = doc(db, "users", user.uid, user.currentUsername);
+          const userDoc = await userDocRef.get();
+
+          if (userDoc.exists()) {
+            // Update the user document with any additional information if needed
+          }
+        } catch (e) {
+          console.error("Error updating user document: ");
+        }
+
         console.log('User logged in successfully!');
         navigate('/user');
       }
@@ -72,17 +105,6 @@ const LoginSignup = () => {
     }
   };
 
-  
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        console.log('User is already authenticated:', user);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [auth]);
-
   return (
     <div className='loginsignup'>
       <div className="loginsignup-container">
@@ -91,9 +113,14 @@ const LoginSignup = () => {
         <div className='loginsignup-fields'>
           {isSignUp && (
             <>
-              <input type="text" placeholder='First Name' />
-              <input type="text" placeholder='Last Name' />
-            </>
+            <input
+              type="username"
+              placeholder='UserName'
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </>
+        
           )}
           <input
             type="email"

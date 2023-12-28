@@ -1,11 +1,23 @@
-import React, { useContext } from "react";
+// CartItems.js
+import React, { useContext, useState } from "react";
 import "./CartItems.css";
 import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
+import PaymentBox from "../../Pages/PaymentBox";
 
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } =
     useContext(ShopContext);
+  const [isPaymentBoxVisible, setPaymentBoxVisible] = useState(false);
+
+  const handleProceedToCheckout = () => {
+    setPaymentBoxVisible(true);
+  };
+
+  const handleClosePaymentBox = () => {
+    setPaymentBoxVisible(false);
+  };
+
   return (
     <div className="cartitems">
       <div className="cartitems-format-main">
@@ -64,7 +76,7 @@ const CartItems = () => {
               <h3>${getTotalCartAmount()}</h3>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>
         </div>
         <div className="cartitems-promocode">
           <p>If you have a promo code, Enter it here</p>
@@ -74,6 +86,10 @@ const CartItems = () => {
           </div>
         </div>
       </div>
+
+      {isPaymentBoxVisible && (
+        <PaymentBox onClose={handleClosePaymentBox} totalAmount={getTotalCartAmount()} />
+      )}
     </div>
   );
 };

@@ -1,0 +1,73 @@
+/* PaymentBox.css */
+.payment-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .payment-box h2 {
+    margin-bottom: 10px;
+  }
+  
+  .input-half {
+    width: 48%; /* Adjust as needed */
+    display: inline-block;
+    margin-right: 2%; /* Adjust for spacing between input halves */
+  }
+  
+  .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .navigation-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+  .action-button {
+    width: 100%; /* Full width */
+    padding: 15px; /* Larger padding */
+    box-sizing: border-box;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px; /* Adjust the margin as needed */
+  }
+
+  .action-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+    margin:0px;
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+    cursor: pointer;
+  }

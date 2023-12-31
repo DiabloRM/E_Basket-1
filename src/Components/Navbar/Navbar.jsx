@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { ShopContext } from "../../Context/ShopContext";
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,6 +25,21 @@ const Navbar = () => {
       handleSearch();
     }
   };
+
+  const handleAuth = async () => {
+    if (auth.currentUser) {
+      try {
+        await signOut(auth);
+        console.log('User logged out successfully!');
+        navigate('/login');
+      } catch (error) {
+        console.error('Logout error:', error.message);
+      }
+    } else {
+      navigate('/login');
+    }
+  };
+
 
   return (
     <div className="navbar">
@@ -113,9 +130,9 @@ const Navbar = () => {
         </li>
       </ul>
       <div className="nav-login-cart">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
+        <button onClick={handleAuth}>
+          {auth.currentUser ? 'Logout' : 'Login'}
+        </button>
         <Link to="/cart">
           <img src={cart_icon} alt="cart-icon" />
         </Link>
